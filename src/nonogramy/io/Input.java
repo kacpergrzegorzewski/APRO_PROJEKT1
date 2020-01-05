@@ -1,5 +1,7 @@
 package nonogramy.io;
 
+import nonogramy.entity.Tile;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,6 +12,7 @@ public class Input {
     private int width; //Szerokość
     private int height; //Wysokość
     public int[] pixels; //Liczba pixeli w pliku png
+    private Tile[] tiles;
 
     //Konstruktor
     public Input(String path) throws IOException {
@@ -29,6 +32,9 @@ public class Input {
                 pixels[(y * width) + x] = image.getRGB(x, y) & mask;
             }
         }
+        tiles = new Tile[width * height];
+
+
     }
 
     //Wyświetla wczytany nonogram w konsoli
@@ -42,5 +48,15 @@ public class Input {
             else
                 System.out.print(" . ");
         }
+    }
+
+    public Tile[] getTiles() {
+
+        for (int i = 0; i < pixels.length; i++) {
+            tiles[i] = new Tile(0,0,false);
+            if (pixels[i] == 0x000000)
+                tiles[i].setTile(true);
+        }
+        return tiles;
     }
 }

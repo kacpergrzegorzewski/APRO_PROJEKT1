@@ -12,9 +12,9 @@ public class Tile {
         this.checked = checked;
     }
 
-    public boolean isChecked() {
+    public boolean isChecked() {  //Zwraca wartość zaznaczenia
         return checked;
-    } //Zwraca wartość zaznaczenia
+    }
 
     public void setTile(boolean checked) {
         this.checked = checked;
