@@ -9,12 +9,6 @@ public class Main {
     
     public static void main(String[] args) {
         //magiczy kod. Nie zagłębiajcie się.
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MainFrame();
-            }
-        });
-        System.out.println(Settings.getFieldSize());
+        EventQueue.invokeLater(() -> new MainFrame());
     }
 }
