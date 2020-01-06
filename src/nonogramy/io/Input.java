@@ -13,6 +13,7 @@ public class Input {
     private int width; //Szerokość
     private int height; //Wysokość
     public int[] pixels; //Liczba pixeli w pliku png
+    private Tile[] tiles;
 
     //Konstruktor
     public Input() {
@@ -25,6 +26,7 @@ public class Input {
         width = image.getWidth(); //Pobranie szerokości i zapisanie jej
         height = image.getHeight(); //Pobranie wysokości i zapisanie jej
         pixels = new int[width * height]; //Utworzenie tablicy pixeli
+        Tile tiles[];
 
         //Dla każdego pixela ustawia jego wartość w zależnoci od koloru (z filtrowanie kanału alpha)
         for (int y = 0; y < height; y++) {
@@ -46,6 +48,8 @@ public class Input {
         board.setTiles(tilesToFill);
 
         return board;
+
+
     }
 
     //Wyświetla wczytany nonogram w konsoli
@@ -59,5 +63,18 @@ public class Input {
             else
                 System.out.print(" . ");
         }
-    }*/
+    }
+    }
+
+ */
+
+    public Tile[] getTiles() {
+
+        for (int i = 0; i < pixels.length; i++) {
+            tiles[i] = new Tile(0,0,false);
+            if (pixels[i] == 0x000000)
+                tiles[i].setTile(true);
+        }
+        return tiles;
+    }
 }

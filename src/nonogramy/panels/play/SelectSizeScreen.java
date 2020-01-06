@@ -1,11 +1,14 @@
 package nonogramy.panels.play;
 
 import nonogramy.Settings;
+import nonogramy.entity.Board;
 import nonogramy.frames.MainFrame;
+import nonogramy.io.Input;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
 ekran służący do wyboru poziomu trudności.
@@ -20,6 +23,16 @@ public class SelectSizeScreen extends JPanel {
     public SelectSizeScreen() {
         easy.addActionListener(e -> {
             Settings.setFieldSize(5);
+            Input nonogram;
+            Board board;
+            try {
+                nonogram = new Input();
+                board=nonogram.readNonogram("test.png");
+            } catch (IOException ex) {
+                board=null;
+                ex.printStackTrace();
+            }
+            Settings.setTiles(board.getTiles());
             MainFrame.cl.show(MainFrame.navigation, "PLAYSCREEN");
         });
 

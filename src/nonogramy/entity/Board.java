@@ -55,6 +55,8 @@ public class Board {
         this.tiles = tiles;
     }
 
+    public Tile[] getTiles() { return tiles; }
+
     private void generateNumbers() {
         //Zlicza zamalowane kratki w kolumnach i wierszach i dodaje je do tablic
 
