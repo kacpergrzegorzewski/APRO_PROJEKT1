@@ -14,7 +14,7 @@ Pierwszy ekran, wyświetlany po włączeniu aplikacji
 public class HomeScreen extends JPanel {
     public HomeScreen() {
         //wymiary okienka. nie wiem czemu akurat tutaj. pozdrawiam.
-        setPreferredSize(new Dimension(400, 400));
+        setPreferredSize(new Dimension(450, 500));
 
         GridLayout gl = new GridLayout(4,4);
         gl.setVgap(20);
