@@ -1,7 +1,7 @@
 package nonogramy.panels.play;
 
 import nonogramy.Settings;
-import nonogramy.components.Block;
+import nonogramy.entity.Block;
 import nonogramy.entity.Board;
 import nonogramy.entity.Tile;
 import nonogramy.frames.MainFrame;
@@ -39,7 +39,7 @@ public class PlayScreen extends JPanel {
         GridLayout fieldLayout = new GridLayout(Settings.getFieldSize(), Settings.getFieldSize());
         GridBagLayout containerLayout = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
-
+        
         //przypisywanie akcji do buttonów
         homeButton.addActionListener(e -> MainFrame.cl.show(MainFrame.navigation, "HOMESCREEN"));
 

@@ -33,16 +33,17 @@ public class SelectSizeScreen extends JPanel {
                 ex.printStackTrace();
             }
             Settings.setTiles(board.getTiles());
+            Settings.setBoardSize(5);
             MainFrame.cl.show(MainFrame.navigation, "PLAYSCREEN");
         });
 
         medium.addActionListener(e -> {
-            Settings.setFieldSize(10);
+            Settings.setBoardSize(10);
             MainFrame.cl.show(MainFrame.navigation, "PLAYSCREEN");
         });
 
         hard.addActionListener(e -> {
-            Settings.setFieldSize(15);
+            Settings.setBoardSize(15);
             MainFrame.cl.show(MainFrame.navigation, "PLAYSCREEN");
         });
 
