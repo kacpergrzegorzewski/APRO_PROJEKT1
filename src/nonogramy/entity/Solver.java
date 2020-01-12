@@ -1,48 +1,18 @@
 package nonogramy.entity;
 
-import nonogramy.io.Input;
-
-import java.io.IOException;
 import java.util.*;
 import static java.util.Arrays.*;
 import static java.util.stream.Collectors.toList;
 
 public class Solver {
-    private static String[] p;
-
-    static String[] p1 = {"C BA CB BB F AE F A B", "AB CA AE GA E C D C"};
-
-    static String[] p2 = {"F CAC ACAC CN AAA AABB EBB EAA ECCC HCCC", "D D AE "
-            + "CD AE A DA BBB CC AAB BAA AAB DA AAB AAA BAB AAA CD BBA DA"};
-
-    static String[] p3 = {"CA BDA ACC BD CCAC CBBAC BBBBB BAABAA ABAD AABB BBH "
-            + "BBBD ABBAAA CCEA AACAAB BCACC ACBH DCH ADBE ADBB DBE ECE DAA DB CC",
-            "BC CAC CBAB BDD CDBDE BEBDF ADCDFA DCCFB DBCFC ABDBA BBF AAF BADB DBF "
-                    + "AAAAD BDG CEF CBDB BBB FC"};
-
-    static String[] p4 = {"E BCB BEA BH BEK AABAF ABAC BAA BFB OD JH BADCF Q Q "
-            + "R AN AAN EI H G", "E CB BAB AAA AAA AC BB ACC ACCA AGB AIA AJ AJ "
-            + "ACE AH BAF CAG DAG FAH FJ GJ ADK ABK BL CM"};
+    private String[] p;
 
     public Solver(Board board) {
         p = prepareArray(board.getRowNumbers(), board.getColsNumbers());
+        newPuzzle(p);
     }
 
-    public static void main(String[] args) throws IOException {
-
-        Board board = new Board(5);
-
-        board.generateRandomBoard();
-        Solver s = new Solver(board);
-        //Input input = new Input();
-        //board = input.readNonogram(RandomGenerator.randomNonogramPath(5));
-        //board.printBoard();
-        for (String[] puzzleData : new String[][]{p})
-            newPuzzle(puzzleData);
-        //Solver.prepareArray(board.getColsNumbers());
-    }
-
-    static void newPuzzle(String[] data) {
+    private void newPuzzle(String[] data) {
         String[] rowData = data[0].split("\\s");
         String[] colData = data[1].split("\\s");
 
@@ -68,7 +38,7 @@ public class Solver {
     }
 
     // collect all possible solutions for the given clues
-    static List<List<BitSet>> getCandidates(String[] data, int len) {
+    private List<List<BitSet>> getCandidates(String[] data, int len) {
         List<List<BitSet>> result = new ArrayList<>();
 
         for (String s : data) {
@@ -91,7 +61,7 @@ public class Solver {
     }
 
     // permutation generator, translated from Python via D
-    static List<String> genSequence(List<String> ones, int numZeros) {
+    private List<String> genSequence(List<String> ones, int numZeros) {
         if (ones.isEmpty())
             return asList(repeat(numZeros, "0"));
 
@@ -104,7 +74,7 @@ public class Solver {
         return result;
     }
 
-    static String repeat(int n, String s) {
+    private String repeat(int n, String s) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++)
             sb.append(s);
@@ -117,7 +87,7 @@ public class Solver {
     that don't, are removed. The same for all columns. It goes back and forth,
     until no more candidates can be removed or a list is empty (failure). */
 
-    static int reduceMutual(List<List<BitSet>> cols, List<List<BitSet>> rows) {
+    private int reduceMutual(List<List<BitSet>> cols, List<List<BitSet>> rows) {
         int countRemoved1 = reduce(cols, rows);
         if (countRemoved1 == -1)
             return -1;
@@ -129,7 +99,7 @@ public class Solver {
         return countRemoved1 + countRemoved2;
     }
 
-    static int reduce(List<List<BitSet>> a, List<List<BitSet>> b) {
+    private int reduce(List<List<BitSet>> a, List<List<BitSet>> b) {
         int countRemoved = 0;
 
         for (int i = 0; i < a.size(); i++) {
@@ -169,7 +139,6 @@ public class Solver {
             for (int n : block) {
                 char letter = (char)(n + 64);
                 r.append(letter);
-                //System.out.println(letter);
             }
             r.append(' ');
         }
@@ -178,7 +147,6 @@ public class Solver {
             for (int n : block) {
                 char letter = (char)(n + 64);
                 c.append(letter);
-                //System.out.println(letter);
             }
             c.append(' ');
         }

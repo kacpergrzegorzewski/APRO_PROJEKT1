@@ -5,11 +5,11 @@ Mam taki plan żeby wszystkie rzeczy które wybieramy w aplikacji były przechow
 
 
 public class Settings {
-    private static int fieldSize=1;
+    private static int boardSize = 1;
 
-    public static void setFieldSize(int fieldSize) {
-        Settings.fieldSize = fieldSize;
+    public static void setBoardSize(int boardSize) {
+        Settings.boardSize = boardSize;
     }
 
-    public static int getFieldSize() { return fieldSize; }
+    public static int getBoardSize() { return boardSize; }
 }

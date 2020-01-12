@@ -4,8 +4,6 @@ import nonogramy.Settings;
 import nonogramy.frames.MainFrame;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PlayScreen extends JPanel {
 
@@ -15,7 +13,7 @@ public class PlayScreen extends JPanel {
 
 
     public PlayScreen() {
-        JLabel text = new JLabel("poziom trudności: " + Settings.getFieldSize());
+        JLabel text = new JLabel("poziom trudności: " + Settings.getBoardSize());
 
         homeButton.addActionListener(e -> MainFrame.cl.show(MainFrame.navigation, "HOMESCREEN"));
 
