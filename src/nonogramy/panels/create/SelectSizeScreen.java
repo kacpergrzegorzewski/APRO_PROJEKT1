@@ -1,13 +1,9 @@
 package nonogramy.panels.create;
 
-import nonogramy.Main;
 import nonogramy.Settings;
-import nonogramy.components.Block;
 import nonogramy.frames.MainFrame;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
 ekran służący do wyboru poziomu trudności.

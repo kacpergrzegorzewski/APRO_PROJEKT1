@@ -3,7 +3,7 @@ package nonogramy.panels.create;
 import javax.swing.*;
 
 import nonogramy.Settings;
-import nonogramy.components.Block;
+import nonogramy.entity.Block;
 import nonogramy.entity.Board;
 import nonogramy.entity.Tile;
 import nonogramy.frames.MainFrame;

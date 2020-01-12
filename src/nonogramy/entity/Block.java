@@ -1,4 +1,4 @@
-package nonogramy.components;
+package nonogramy.entity;
 
 import nonogramy.frames.MainFrame;
 

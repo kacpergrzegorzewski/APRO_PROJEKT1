@@ -9,7 +9,10 @@ public class Board {
     public Tile[] tiles; //Tablica wszystkich pól na planszy
 
     private ArrayList<ArrayList<Integer>> rowNumbers = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> getRowNumbers() { return rowNumbers; }
+
     private ArrayList<ArrayList<Integer>> columnNumbers = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> getColsNumbers() { return columnNumbers; }
 
     //Konstruktor
     public Board(int size) {
@@ -105,7 +108,7 @@ public class Board {
             columnNumbers.add(array1); // dodaje roboczą liste do naszej listy list
             //array1.clear();
         }
-        System.out.println(rowNumbers);
-        System.out.println(columnNumbers);
+        //System.out.println(rowNumbers);
+        //System.out.println(columnNumbers);
     }
 }
