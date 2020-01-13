@@ -2,6 +2,7 @@ package nonogramy.panels.play;
 
 import nonogramy.Settings;
 import nonogramy.entity.Board;
+import nonogramy.entity.RandomGenerator;
 import nonogramy.frames.MainFrame;
 import nonogramy.io.Input;
 
@@ -23,27 +24,46 @@ public class SelectSizeScreen extends JPanel {
     public SelectSizeScreen() {
         easy.addActionListener(e -> {
             Settings.setFieldSize(5);
-            Input nonogram;
             Board board;
             try {
-                nonogram = new Input();
-                board=nonogram.readNonogram("test.png");
+                board=Input.readNonogram(RandomGenerator.randomNonogramPath(15));
             } catch (IOException ex) {
                 board=null;
                 ex.printStackTrace();
             }
+            assert board != null;
             Settings.setTiles(board.getTiles());
             Settings.setBoardSize(5);
             MainFrame.cl.show(MainFrame.navigation, "PLAYSCREEN");
         });
 
         medium.addActionListener(e -> {
-            Settings.setBoardSize(10);
+            Settings.setFieldSize(10);
+            Board board;
+            try {
+                board=Input.readNonogram(RandomGenerator.randomNonogramPath(Settings.getFieldSize()));
+            } catch (IOException ex) {
+                board=null;
+                ex.printStackTrace();
+            }
+            assert board != null;
+            Settings.setTiles(board.getTiles());
+            Settings.setBoardSize(Settings.getFieldSize());
             MainFrame.cl.show(MainFrame.navigation, "PLAYSCREEN");
         });
 
         hard.addActionListener(e -> {
-            Settings.setBoardSize(15);
+            Settings.setFieldSize(15);
+            Board board;
+            try {
+                board=Input.readNonogram(RandomGenerator.randomNonogramPath(Settings.getFieldSize()));
+            } catch (IOException ex) {
+                board=null;
+                ex.printStackTrace();
+            }
+            assert board != null;
+            Settings.setTiles(board.getTiles());
+            Settings.setBoardSize(Settings.getFieldSize());
             MainFrame.cl.show(MainFrame.navigation, "PLAYSCREEN");
         });
 

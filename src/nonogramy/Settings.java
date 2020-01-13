@@ -10,7 +10,7 @@ import nonogramy.entity.Tile;
 
 public class Settings {
     private static int fieldSize=1;
-    private static Tile[] tiles;
+    private static Tile[] tiles=new Tile[0];
 
     private static int boardSize = 1;
 
