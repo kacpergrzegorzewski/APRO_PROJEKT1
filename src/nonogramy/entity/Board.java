@@ -3,8 +3,6 @@ package nonogramy.entity;
 import nonogramy.Settings;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class Board {
     //public int size; //Rozmiar planszy
@@ -62,7 +60,7 @@ public class Board {
         //Zlicza zamalowane kratki w kolumnach i wierszach i dodaje je do tablic
 
         int inrow = 0; //ilosc kratek z rzedu w wierszu
-        for (int j = 0; j < Settings.getBoardSize(); j++) {
+        for (int j = 0; j < Settings.getBoardSize() && this.tiles.length>0; j++) {
             ArrayList<Integer> array = new ArrayList<>(); //lista pomocnicza
             for (int i = 0; i < Settings.getBoardSize(); i++) {
 
@@ -88,7 +86,7 @@ public class Board {
 
         int incol = 0;
 
-        for (int j = 0; j < Settings.getBoardSize(); j++) {
+        for (int j = 0; j < Settings.getBoardSize() && this.tiles.length>0; j++) {
             ArrayList<Integer> array1 = new ArrayList<>();
             for (int i = 0; i < Settings.getBoardSize(); i++) {
 

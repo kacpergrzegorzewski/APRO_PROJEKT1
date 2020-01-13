@@ -12,6 +12,9 @@ public class Game {
         Board board;
         board = Input.readNonogram(RandomGenerator.randomNonogramPath(15));
         Solver s = new Solver(board);
+        board.getColsNumbers();
+        System.out.println(board.getColsNumbers());
+        System.out.println("CHORE NAPISY");
 
         //board.printBoard();
         //
