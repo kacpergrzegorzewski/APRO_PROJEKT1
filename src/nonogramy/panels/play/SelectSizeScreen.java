@@ -26,7 +26,7 @@ public class SelectSizeScreen extends JPanel {
             Settings.setFieldSize(5);
             Board board;
             try {
-                board=Input.readNonogram(RandomGenerator.randomNonogramPath(15));
+                board=Input.readNonogram(RandomGenerator.randomNonogramPath(Settings.getFieldSize()));
             } catch (IOException ex) {
                 board=null;
                 ex.printStackTrace();
