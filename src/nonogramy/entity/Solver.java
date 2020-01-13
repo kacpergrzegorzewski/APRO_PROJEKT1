@@ -45,8 +45,7 @@ public class Solver {
             List<BitSet> lst = new LinkedList<>();
 
             int sumChars = s.chars().map(c -> c - 'A' + 1).sum();
-            List<String> prep = stream(s.split(""))
-                    .map(x -> repeat(x.charAt(0) - 'A' + 1, "1")).collect(toList());
+            List<String> prep = stream(s.split("")).map(x -> repeat(x.charAt(0) - 'A' + 1, "1")).collect(toList());
 
             for (String r : genSequence(prep, len - sumChars + 1)) {
                 char[] bits = r.substring(1).toCharArray();
@@ -136,6 +135,10 @@ public class Solver {
         String[] newArray = new String[2];
 
         for (ArrayList<Integer> block : rows) {
+            if (block.isEmpty()) {
+
+            }
+
             for (int n : block) {
                 char letter = (char)(n + 64);
                 r.append(letter);

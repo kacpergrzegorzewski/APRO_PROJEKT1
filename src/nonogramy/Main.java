@@ -9,6 +9,6 @@ public class Main {
     
     public static void main(String[] args) {
         //magiczy kod. Nie zagłębiajcie się.
-        EventQueue.invokeLater(() -> new MainFrame());
+        EventQueue.invokeLater(MainFrame::new);
     }
 }

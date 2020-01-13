@@ -80,6 +80,8 @@ public class Board {
                 }
 
             }
+            if (array.isEmpty())
+                array.add(0);
             //System.out.println(array);
             rowNumbers.add(array); // dodaje roboczą liste do naszej listy list
             //array.clear();
@@ -104,6 +106,9 @@ public class Board {
                     incol = 0;
                 }
             }
+
+            if (array1.isEmpty())
+                array1.add(0);
             //System.out.println(array1);
             columnNumbers.add(array1); // dodaje roboczą liste do naszej listy list
             //array1.clear();
