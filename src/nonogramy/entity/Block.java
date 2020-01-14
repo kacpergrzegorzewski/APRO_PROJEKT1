@@ -1,13 +1,7 @@
-package nonogramy.components;
-
-import nonogramy.frames.MainFrame;
+package nonogramy.entity;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
 
 public class Block extends JPanel  {
     private static final int PREF_W = 20;

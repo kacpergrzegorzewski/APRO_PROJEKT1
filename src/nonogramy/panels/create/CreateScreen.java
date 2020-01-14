@@ -3,7 +3,7 @@ package nonogramy.panels.create;
 import javax.swing.*;
 
 import nonogramy.Settings;
-import nonogramy.components.Block;
+import nonogramy.entity.Block;
 import nonogramy.entity.Board;
 import nonogramy.entity.Tile;
 import nonogramy.frames.MainFrame;
@@ -20,10 +20,10 @@ Ekran, w którym użytkownik może sam stworzyć nonogram lub wygenerować losow
 
 public class CreateScreen extends JPanel {
     public CreateScreen() {
-        Block[][] block = new Block[Settings.getFieldSize()][Settings.getFieldSize()];
+        Block[][] block = new Block[Settings.getBoardSize()][Settings.getBoardSize()];
 
         //Labels
-        JLabel text = new JLabel("poziom trudności: " + Settings.getFieldSize());
+        JLabel text = new JLabel("poziom trudności: " + Settings.getBoardSize());
 
         //Buttons
         JButton homeButton = new JButton("Powrót");
@@ -35,7 +35,7 @@ public class CreateScreen extends JPanel {
         JPanel fieldContainer = new JPanel();
 
         //Grids
-        GridLayout fieldLayout = new GridLayout(Settings.getFieldSize(), Settings.getFieldSize());
+        GridLayout fieldLayout = new GridLayout(Settings.getBoardSize(), Settings.getBoardSize());
         GridBagLayout containerLayout = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
 
@@ -44,12 +44,12 @@ public class CreateScreen extends JPanel {
 
         randomButton.addActionListener(e -> {
             int currentTile = 0;
-            Board board = new Board(Settings.getFieldSize());
+            Board board = new Board(Settings.getBoardSize());
             board.generateRandomBoard();
             boolean[] values = board.getBoard();
             board.generateRandomBoard();
-            for (int row = 0; row < Settings.getFieldSize(); row++) {
-                for (int column = 0; column < Settings.getFieldSize(); column++) {
+            for (int row = 0; row < Settings.getBoardSize(); row++) {
+                for (int column = 0; column < Settings.getBoardSize(); column++) {
                     block[row][column].setBlock(values[currentTile++]);
                     block[row][column].repaint();
                     //System.out.println(values[row+column]);
@@ -58,13 +58,13 @@ public class CreateScreen extends JPanel {
         });
 
         saveButton.addActionListener(e -> {
-            int numberOfBlocks = Settings.getFieldSize()*Settings.getFieldSize();
+            int numberOfBlocks = Settings.getBoardSize()*Settings.getBoardSize();
             int currentTile = 0;
-            Board board = new Board(Settings.getFieldSize());
+            Board board = new Board(Settings.getBoardSize());
             Tile[] tiles = new Tile[numberOfBlocks];
 
-            for (int row = 0; row < Settings.getFieldSize(); row++) {
-                for (int column = 0; column < Settings.getFieldSize(); column++) {
+            for (int row = 0; row < Settings.getBoardSize(); row++) {
+                for (int column = 0; column < Settings.getBoardSize(); column++) {
                     tiles[currentTile++] = new Tile(row,column,block[row][column].getBlock());
                 }
             }
@@ -72,7 +72,7 @@ public class CreateScreen extends JPanel {
 
             try {
                 //Wzależności od rozmiaru planszy dopasowuje skalę zapisu
-                switch (Settings.getFieldSize()) {
+                switch (Settings.getBoardSize()) {
                     case 5:
                         Output.writeNonogram(board, 50,  "user_saved_nonograms/5x5/nonogram5x5.png");
                         break;
@@ -93,8 +93,8 @@ public class CreateScreen extends JPanel {
         /*
           Tworzenie siatki nonogramu
          */
-        for (int row = 0; row < Settings.getFieldSize(); row++) {
-            for(int column = 0; column < Settings.getFieldSize(); column++) {
+        for (int row = 0; row < Settings.getBoardSize(); row++) {
+            for(int column = 0; column < Settings.getBoardSize(); column++) {
                 block[row][column] = new Block();
                 int finalRow = row;
                 int finalColumn = column;

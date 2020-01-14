@@ -1,5 +1,6 @@
 package nonogramy.io;
 
+import nonogramy.Settings;
 import nonogramy.entity.Board;
 
 import javax.imageio.ImageIO;
@@ -12,14 +13,14 @@ import java.io.IOException;
 //Klasa zapisująca nonogram
 public class Output {
     public static void writeNonogram(Board board, int scale, String path) throws IOException {
-        BufferedImage image = new BufferedImage(board.size, board.size, BufferedImage.TYPE_INT_RGB); //Tworzenie strumienia o wielkości podanej planszy i trybie zapisu RGB
+        BufferedImage image = new BufferedImage(Settings.getBoardSize(), Settings.getBoardSize(), BufferedImage.TYPE_INT_RGB); //Tworzenie strumienia o wielkości podanej planszy i trybie zapisu RGB
         WritableRaster raster = image.getRaster();
 
-        int[] pixels = new int[board.size * board.size]; //Tworzenie tablicy pixeli o wielkości pól na planszy
+        int[] pixels = new int[Settings.getBoardSize() * Settings.getBoardSize()]; //Tworzenie tablicy pixeli o wielkości pól na planszy
 
         convertTiles(board, pixels);
 
-        raster.setDataElements(0, 0, board.size, board.size, pixels); //Zapisuje do obrazu rastrowego podaną tablice pixeli
+        raster.setDataElements(0, 0, Settings.getBoardSize(), Settings.getBoardSize(), pixels); //Zapisuje do obrazu rastrowego podaną tablice pixeli
         image.setData(raster); //Podmienia raster z danymi do strumienia
 
         image = resizeImage(image, scale); //Zmienia rozmiar obrazu zapisywanego, aby był czytelny
