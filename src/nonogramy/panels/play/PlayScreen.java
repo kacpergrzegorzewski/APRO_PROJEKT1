@@ -12,6 +12,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+/**
+ * Klasa z ekranem gry
+ */
+
 public class PlayScreen extends JPanel {
 
     public PlayScreen() {
@@ -77,11 +81,11 @@ public class PlayScreen extends JPanel {
             }
 
             if (isCorrect) {
-                notification.setText("NONOGRAM ROZWIĄZANY PRAWIDŁOWO. GRATULACJE!");
+                notification.setText("NONOGRAM ROZWIAZANY PRAWIDLOWO. GRATULACJE!");
                 notification.repaint();
             }
             else {
-                notification.setText("LOL. ŹLE. XDDDDDDDD.");
+                notification.setText("LOL. ZLE. XDDDDDDDD.");
                 notification.repaint();
             }
         });
@@ -120,14 +124,16 @@ public class PlayScreen extends JPanel {
                 columnNumbersContainer.add(new Number("0"), columnNumbersLayoutSettings);
                 columnNumbersGridX++;
             }
-            for (int number = 0;columnNumbers.size()>0 && number < columnNumbers.get(column).size(); number++) {
-                columnNumbersLayoutSettings.gridx = columnNumbersGridX;
-                columnNumbersLayoutSettings.gridy = columnNumbersGridY;
-                columnNumbersContainer.add(new Number(columnNumbers.get(column).get(number).toString()), columnNumbersLayoutSettings);
-                columnNumbersGridY--;
+            if(columnNumbers.size() > 0) {
+                for (int number = columnNumbers.get(column).size()-1; number >= 0; number--) {
+                    columnNumbersLayoutSettings.gridx = columnNumbersGridX;
+                    columnNumbersLayoutSettings.gridy = columnNumbersGridY;
+                    columnNumbersContainer.add(new Number(columnNumbers.get(column).get(number).toString()), columnNumbersLayoutSettings);
+                    columnNumbersGridY--;
+                }
+                columnNumbersGridY = Settings.getFieldSize();
+                columnNumbersGridX++;
             }
-            columnNumbersGridY = Settings.getFieldSize();
-            columnNumbersGridX++;
         }
 
         rowNumbersContainer.setLayout(rowNumbersLayout);
@@ -141,14 +147,16 @@ public class PlayScreen extends JPanel {
                 rowNumbersContainer.add(new Number("0"), rowNumbersLayoutSettings);
                 rowNumbersGridX++;
             }
-            for (int number = 0;rowNumbers.size()>0 && number < rowNumbers.get(row).size(); number++) {
-                rowNumbersLayoutSettings.gridx = rowNumbersGridX;
-                rowNumbersLayoutSettings.gridy = rowNumbersGridY;
-                rowNumbersContainer.add(new Number(rowNumbers.get(row).get(number).toString()), rowNumbersLayoutSettings);
-                rowNumbersGridX--;
+            if(rowNumbers.size() > 0) {
+                for (int number = rowNumbers.get(row).size()-1; number >= 0; number--) {
+                    rowNumbersLayoutSettings.gridx = rowNumbersGridX;
+                    rowNumbersLayoutSettings.gridy = rowNumbersGridY;
+                    rowNumbersContainer.add(new Number(rowNumbers.get(row).get(number).toString()), rowNumbersLayoutSettings);
+                    rowNumbersGridX--;
+                }
+                rowNumbersGridX = Settings.getFieldSize();
+                rowNumbersGridY++;
             }
-            rowNumbersGridX = Settings.getFieldSize();
-            rowNumbersGridY++;
         }
 
 

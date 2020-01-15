@@ -3,6 +3,10 @@ package nonogramy.entity;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * JPanel wyświetlający kratki z liczbami
+ */
+
 public class Number extends JPanel  {
     private String text="";
 

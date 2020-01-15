@@ -1,5 +1,5 @@
 package nonogramy;
-/*
+/**
 Mam taki plan żeby wszystkie rzeczy które wybieramy w aplikacji były przechowywane w tej klasie (np wybrany rozmiar mapy)
  */
 

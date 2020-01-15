@@ -1,5 +1,9 @@
 package nonogramy.entity;
 
+/**
+ * Pojedyncza składowa elementu board
+ */
+
 public class Tile {
     private int x; //Pozycja x
     private int y; //Pozycja y

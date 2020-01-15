@@ -10,6 +10,9 @@ import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Klasa umożliwiająca zapis nonogramu do png
+ */
 //Klasa zapisująca nonogram
 public class Output {
     public static void writeNonogram(Board board, int scale, String path) throws IOException {
