@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
+/**
 Pierwszy ekran, wyświetlany po włączeniu aplikacji
  */
 

@@ -18,17 +18,17 @@ public class SelectSizeScreen extends JPanel {
 
     public SelectSizeScreen() {
         easy.addActionListener(e -> {
-            Settings.setBoardSize(5);
+            Settings.setFieldSize(5);
             MainFrame.cl.show(MainFrame.navigation, "CREATESCREEN");
         });
 
         medium.addActionListener(e -> {
-            Settings.setBoardSize(10);
+            Settings.setFieldSize(10);
             MainFrame.cl.show(MainFrame.navigation, "CREATESCREEN");
         });
 
         hard.addActionListener(e -> {
-            Settings.setBoardSize(15);
+            Settings.setFieldSize(15);
             MainFrame.cl.show(MainFrame.navigation, "CREATESCREEN");
         });
 

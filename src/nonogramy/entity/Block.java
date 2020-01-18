@@ -3,6 +3,10 @@ package nonogramy.entity;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * JPanel wyświetlający pojedynczy blok do gry
+ */
+
 public class Block extends JPanel  {
     private static final int PREF_W = 20;
     private static final int PREF_H = PREF_W;

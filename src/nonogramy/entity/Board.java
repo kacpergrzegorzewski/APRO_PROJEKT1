@@ -4,6 +4,10 @@ import nonogramy.Settings;
 
 import java.util.ArrayList;
 
+/**
+ * Klasa tworząca instancje planszy
+ */
+
 public class Board {
     //public int size; //Rozmiar planszy
     public Tile[] tiles; //Tablica wszystkich pól na planszy

@@ -7,6 +7,10 @@ import nonogramy.io.*;
 
 import java.io.IOException;
 
+/**
+ * Klasa do testowania w okienku konsoli
+ */
+
 public class Game {
     public static void main(String[] args) throws IOException {
         Board board;

@@ -4,6 +4,10 @@ import java.util.*;
 import static java.util.Arrays.*;
 import static java.util.stream.Collectors.toList;
 
+/**
+ * Klasa umożliwiająca rozwiązanie nonogramu przez algorytm.
+ */
+
 public class Solver {
     private String[] p;
 

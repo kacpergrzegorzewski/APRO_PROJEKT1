@@ -9,6 +9,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Klasa umożliwiająca odczyt nonogramu z png
+ */
+
 //Klasa wczytująca nonogram
 public class Input {
     private static int width; //Szerokość
