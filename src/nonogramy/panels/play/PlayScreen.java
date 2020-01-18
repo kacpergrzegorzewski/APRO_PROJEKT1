@@ -15,7 +15,6 @@ import java.util.ArrayList;
 /**
  * Klasa z ekranem gry
  */
-
 public class PlayScreen extends JPanel {
 
     public PlayScreen() {

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * JPanel wyświetlający kratki z liczbami
+ * JPanel wyswietlajacy kratki z liczbami
  */
 
 public class Number extends JPanel  {

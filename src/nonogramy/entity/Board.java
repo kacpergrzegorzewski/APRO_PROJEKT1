@@ -5,24 +5,31 @@ import nonogramy.Settings;
 import java.util.ArrayList;
 
 /**
- * Klasa tworząca instancje planszy
+ * Klasa tworzaca instancje planszy
  */
-
 public class Board {
     //public int size; //Rozmiar planszy
     public Tile[] tiles; //Tablica wszystkich pól na planszy
 
     private ArrayList<ArrayList<Integer>> rowNumbers = new ArrayList<>();
+
+    /**
+     * Getter
+     * @return Tablice tablic numerow w wierszach
+     */
     public ArrayList<ArrayList<Integer>> getRowNumbers() { return rowNumbers; }
 
     private ArrayList<ArrayList<Integer>> columnNumbers = new ArrayList<>();
+
+    /**
+     * Getter
+     * @return Tablice tablic numerow w kolumnach
+     */
     public ArrayList<ArrayList<Integer>> getColsNumbers() { return columnNumbers; }
 
-    //Konstruktor
     public Board(int size) {
         Settings.setBoardSize(size);
         tiles = new Tile[size * size];
-        //generateBoard();
     }
 
     public Board() {

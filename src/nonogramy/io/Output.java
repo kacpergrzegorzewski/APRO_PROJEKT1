@@ -11,9 +11,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Klasa umożliwiająca zapis nonogramu do png
+ * Klasa umozliwiajaca zapis nonogramu do png
  */
-//Klasa zapisująca nonogram
 public class Output {
     public static void writeNonogram(Board board, int scale, String path) throws IOException {
         BufferedImage image = new BufferedImage(Settings.getBoardSize(), Settings.getBoardSize(), BufferedImage.TYPE_INT_RGB); //Tworzenie strumienia o wielkości podanej planszy i trybie zapisu RGB

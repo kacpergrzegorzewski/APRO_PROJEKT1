@@ -3,7 +3,7 @@ package nonogramy.entity;
 import java.util.Random;
 
 /**
- * Klasa służąca do generowania losowej planszy i losowej ścieżki do gotowego nonogramu. Posiada metody statyczne.
+ * Klasa sluzaca do generowania losowej planszy i losowej sciezki do gotowego nonogramu. Posiada metody statyczne
  */
 
 public class RandomGenerator {

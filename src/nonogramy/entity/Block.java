@@ -4,26 +4,38 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * JPanel wyświetlający pojedynczy blok do gry
+ * JPanel wyswietlajacy pojedynczy blok do gry
  */
-
 public class Block extends JPanel  {
     private static final int PREF_W = 20;
     private static final int PREF_H = PREF_W;
     private boolean isEnabled;
     private boolean isCrossed;
 
-
+    /**
+     * Konstruktor
+     */
     public Block() {
         setPreferredSize(new Dimension(34, 34));
         isEnabled = false;
         isCrossed = false;
     }
 
+    /**
+     * Setter
+     * @param isEnabled wartosc zaznaczenia
+     */
     public void setBlock(boolean isEnabled) { this.isEnabled=isEnabled; }
 
+    /**
+     * Getter
+     * @return Wartosc zanaczenia
+     */
     public boolean getBlock() { return isEnabled; }
 
+    /**
+     * Zmienia wartosc zaznaczenia bloku przy kliknieciu
+     */
     public void click() {
         if(isEnabled) {
             isEnabled = false;
@@ -52,7 +64,4 @@ public class Block extends JPanel  {
         if(isEnabled) g2.fillRect(3,3, width -5, height -5);
         if(isCrossed) g2.drawString("X", 8, 24);
     }
-
-
-
 }

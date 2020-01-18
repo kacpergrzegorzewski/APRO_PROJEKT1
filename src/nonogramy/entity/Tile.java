@@ -1,7 +1,7 @@
 package nonogramy.entity;
 
 /**
- * Pojedyncza składowa elementu board
+ * Pojedyncza skladowa elementu board. Reprezentuje pole na planszy
  */
 
 public class Tile {

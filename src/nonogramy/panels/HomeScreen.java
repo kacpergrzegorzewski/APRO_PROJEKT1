@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
-Pierwszy ekran, wyświetlany po włączeniu aplikacji
+ * Pierwszy ekran, wyswietlany po właczeniu aplikacji
  */
 
 public class HomeScreen extends JPanel {
