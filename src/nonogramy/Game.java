@@ -14,8 +14,6 @@ public class Game {
     public static void main(String[] args) throws IOException {
         Board board;
         board = Input.readNonogram(RandomGenerator.randomNonogramPath(5));
-        new Solver(board);
-
-
+        board.solve();
     }
 }

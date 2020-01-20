@@ -91,11 +91,8 @@ public class Board {
             }
             if (array.isEmpty())
                 array.add(0);
-            //System.out.println(array);
             rowNumbers.add(array); // dodaje roboczą liste do naszej listy list
-            //array.clear();
         }
-        //System.out.println();
 
         int incol = 0;
 
@@ -118,11 +115,11 @@ public class Board {
 
             if (array1.isEmpty())
                 array1.add(0);
-            //System.out.println(array1);
             columnNumbers.add(array1); // dodaje roboczą liste do naszej listy list
-            //array1.clear();
         }
-        //System.out.println(rowNumbers);
-        //System.out.println(columnNumbers);
+    }
+
+    public Tile[] solve() {
+        return new Solver().newPuzzle(this);
     }
 }

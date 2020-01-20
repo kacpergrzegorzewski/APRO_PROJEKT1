@@ -1,5 +1,7 @@
 package nonogramy.entity;
 
+import nonogramy.Settings;
+
 import java.util.*;
 import static java.util.Arrays.*;
 import static java.util.stream.Collectors.toList;
@@ -8,25 +10,26 @@ import static java.util.stream.Collectors.toList;
  * Klasa umozliwiajaca rozwiazanie nonogramu przez algorytm
  */
 public class Solver {
-    private String[] p; //Tablica ciągu liter dawana do algorytmu
+    //private String[] p; //Tablica ciągu liter dawana do algorytmu
 
     /**
      * Konstruktor
-     * @param board plansza nonogramu
      */
-    public Solver(Board board) {
-        p = prepareArray(board.getRowNumbers(), board.getColsNumbers()); //Przypisuje tablicy liter litery wcześniej zamienione przez funkcję prepareArray
-        newPuzzle(p); //Rysuje rozwiązanie
+    public Solver() {
+        //p = prepareArray(board.getRowNumbers(), board.getColsNumbers()); //Przypisuje tablicy liter litery wcześniej zamienione przez funkcję prepareArray
+        //newPuzzle(p, board); //Rysuje rozwiązanie
     }
 
     /**
      * Rozwiazuje i wyswietla plansze
-     * @param data wartosci w literach poszczegolnych zamalowanych blokow na planszy
      */
-    private void newPuzzle(String[] data) {
+    public Tile[] newPuzzle(Board board) {
+        String[] d = prepareArray(board.getRowNumbers(), board.getColsNumbers());
+        Tile[] solvedTiles = new Tile[board.tiles.length];
+
         //Oddziela poszczególne ciągi znaków względem spacji
-        String[] rowData = data[0].split("\\s");
-        String[] colData = data[1].split("\\s");
+        String[] rowData = d[0].split("\\s");
+        String[] colData = d[1].split("\\s");
 
         List<List<BitSet>> cols, rows; //Tworzy dwie listy listy bitów
 
@@ -38,18 +41,22 @@ public class Solver {
         do {
             numChanged = reduceMutual(cols, rows);
             if (numChanged == -1) {
-                System.out.println("No solution");
-                return;
+                System.err.println("No solution");
+                break;
             }
         } while (numChanged > 0);
 
         //Rysuje planszę, w zależności od istnienia 1, albo 0 na danym indeksie
         for (List<BitSet> row : rows) {
-            for (int i = 0; i < cols.size(); i++)
+            for (int i = 0; i < cols.size(); i++) {
+                solvedTiles[i] = new Tile(i% Settings.getBoardSize(), i/Settings.getBoardSize(), row.get(0).get(i));
                 System.out.print(row.get(0).get(i) ? "# " : ". ");
+            }
             System.out.println();
         }
         System.out.println();
+
+        return solvedTiles;
     }
 
     /**
@@ -186,7 +193,7 @@ public class Solver {
      * @param cols tablica tablic numerow w kolumnach
      * @return zamieniona odpowiednio na litery tablice z ciagami znakow
      */
-    private String[] prepareArray(ArrayList<ArrayList<Integer>> rows, ArrayList<ArrayList<Integer>> cols) {
+    public String[] prepareArray(ArrayList<ArrayList<Integer>> rows, ArrayList<ArrayList<Integer>> cols) {
         StringBuilder r = new StringBuilder();
         StringBuilder c = new StringBuilder();
 
