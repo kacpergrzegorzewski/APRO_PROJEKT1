@@ -48,13 +48,13 @@ public class Solver {
 
         //Rysuje planszę, w zależności od istnienia 1, albo 0 na danym indeksie
         for (List<BitSet> row : rows) {
-            for (int i = 0; i < cols.size(); i++) {
+            for (int i = 0; i < board.tiles.length; i++) {
                 solvedTiles[i] = new Tile(i% Settings.getBoardSize(), i/Settings.getBoardSize(), row.get(0).get(i));
-                System.out.print(row.get(0).get(i) ? "# " : ". ");
+                //System.out.print(row.get(0).get(i%Settings.getBoardSize()) ? "# " : ". ");
             }
-            System.out.println();
+            //System.out.println();
         }
-        System.out.println();
+        //System.out.println();
 
         return solvedTiles;
     }
