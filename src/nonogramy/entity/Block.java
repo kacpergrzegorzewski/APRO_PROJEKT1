@@ -11,12 +11,14 @@ public class Block extends JPanel  {
     private static final int PREF_H = PREF_W;
     private boolean isEnabled;
     private boolean isCrossed;
+    private int height = 30;  //wysokość obramowania
+    private int width = 30;  //szerokość obramowania
 
     /**
      * Konstruktor
      */
     public Block() {
-        setPreferredSize(new Dimension(34, 34));
+        setPreferredSize(new Dimension(34, 34));  //szerokość i wysokość bloku razem z marginesami
         isEnabled = false;
         isCrossed = false;
     }
@@ -54,14 +56,12 @@ public class Block extends JPanel  {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setBackground(Color.WHITE);
-        int height = 30;
-        int width = 30;
         g2.drawRect(0, 0, width, height);
 
         Font font = new Font("Arial", Font.PLAIN, 24);
         g2.setFont(font);
 
-        if(isEnabled) g2.fillRect(3,3, width -5, height -5);
-        if(isCrossed) g2.drawString("X", 8, 24);
+        if(isEnabled) g2.fillRect(3,3, width -5, height -5); //-5 aby wypełnić tylko część wnętrza, a współrzędne ustawiają po środku
+        if(isCrossed) g2.drawString("X", 8, 24);  //Rysowanie znaku "X" we wnętrzu
     }
 }

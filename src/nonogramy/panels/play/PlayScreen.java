@@ -3,6 +3,7 @@ package nonogramy.panels.play;
 import nonogramy.Settings;
 import nonogramy.entity.Block;
 import nonogramy.entity.Board;
+import nonogramy.entity.Tile;
 import nonogramy.frames.MainFrame;
 import nonogramy.entity.Number;
 
@@ -58,6 +59,16 @@ public class PlayScreen extends JPanel {
         homeButton.addActionListener(e -> MainFrame.cl.show(MainFrame.navigation, "HOMESCREEN"));
 
         solve.addActionListener(e -> {
+            board.solve();
+            Tile[] tiles = board.getTiles();
+            int i=0;
+            for(int row=0; row<Settings.getFieldSize(); row++ ) {
+                for (int column = 0; column < Settings.getFieldSize(); column++) {
+                    block[row][column].setBlock(tiles[i].isChecked());
+                    block[row][column].repaint();
+                    i++;
+                }
+            }
 
         });
 
