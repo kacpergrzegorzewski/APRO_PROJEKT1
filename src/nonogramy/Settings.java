@@ -1,13 +1,10 @@
 package nonogramy;
-/*
-Mam taki plan żeby wszystkie rzeczy które wybieramy w aplikacji były przechowywane w tej klasie (np wybrany rozmiar mapy)
- */
 
-import nonogramy.entity.Block;
-import nonogramy.entity.Board;
 import nonogramy.entity.Tile;
 
-
+/**
+ * Mam taki plan zeby wszystkie rzeczy ktore wybieramy w aplikacji były przechowywane w tej klasie (np. wybrany rozmiar mapy)
+ */
 public class Settings {
     private static int fieldSize=1;
     private static Tile[] tiles=new Tile[0];

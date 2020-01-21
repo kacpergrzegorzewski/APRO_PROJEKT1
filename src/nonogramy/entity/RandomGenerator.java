@@ -2,6 +2,10 @@ package nonogramy.entity;
 
 import java.util.Random;
 
+/**
+ * Klasa sluzaca do generowania losowej planszy i losowej sciezki do gotowego nonogramu. Posiada metody statyczne
+ */
+
 public class RandomGenerator {
     public static void generateRandomTiles(Tile[] tiles) {
         Random random = new Random();

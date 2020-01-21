@@ -4,14 +4,27 @@ import nonogramy.Settings;
 
 import java.util.ArrayList;
 
+/**
+ * Klasa tworzaca instancje planszy
+ */
 public class Board {
     //public int size; //Rozmiar planszy
     public Tile[] tiles; //Tablica wszystkich pól na planszy
 
     private ArrayList<ArrayList<Integer>> rowNumbers = new ArrayList<>();
+
+    /**
+     * Getter
+     * @return Tablice tablic numerow w wierszach
+     */
     public ArrayList<ArrayList<Integer>> getRowNumbers() { return rowNumbers; }
 
     private ArrayList<ArrayList<Integer>> columnNumbers = new ArrayList<>();
+
+    /**
+     * Getter
+     * @return Tablice tablic numerow w kolumnach
+     */
     public ArrayList<ArrayList<Integer>> getColsNumbers() { return columnNumbers; }
 
     //Konstruktor
@@ -19,7 +32,6 @@ public class Board {
     public Board(int size) {
         Settings.setBoardSize(size);
         tiles = new Tile[size * size];
-        //generateBoard();
     }
 
     public Board() {
@@ -81,11 +93,8 @@ public class Board {
             }
             if (array.isEmpty())
                 array.add(0);
-            //System.out.println(array);
             rowNumbers.add(array); // dodaje roboczą liste do naszej listy list
-            //array.clear();
         }
-        //System.out.println();
 
         int incol = 0;
 
@@ -108,11 +117,11 @@ public class Board {
 
             if (array1.isEmpty())
                 array1.add(0);
-            //System.out.println(array1);
             columnNumbers.add(array1); // dodaje roboczą liste do naszej listy list
-            //array1.clear();
         }
-        //System.out.println(rowNumbers);
-        //System.out.println(columnNumbers);
+    }
+
+    public Tile[] solve() {
+        return new Solver().newPuzzle(this);
     }
 }

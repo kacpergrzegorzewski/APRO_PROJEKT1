@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 /**
-Ekran, w którym użytkownik może sam stworzyć nonogram lub wygenerować losowo.
+ * Ekran, w ktorym uzytkownik moze sam stworzyc nonogram lub wygenerowac losowo
  */
 
 public class CreateScreen extends JPanel {

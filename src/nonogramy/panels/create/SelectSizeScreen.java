@@ -6,7 +6,7 @@ import nonogramy.frames.MainFrame;
 import javax.swing.*;
 
 /**
-ekran służący do wyboru poziomu trudności.
+ * Ekran słuzacy do wyboru poziomu trudnosci
  */
 
 public class SelectSizeScreen extends JPanel {
@@ -14,21 +14,19 @@ public class SelectSizeScreen extends JPanel {
     private JButton medium = new JButton("10x10");
     private JButton hard = new JButton("15x15");
 
-
-
     public SelectSizeScreen() {
         easy.addActionListener(e -> {
-            Settings.setBoardSize(5);
+            Settings.setFieldSize(5);
             MainFrame.cl.show(MainFrame.navigation, "CREATESCREEN");
         });
 
         medium.addActionListener(e -> {
-            Settings.setBoardSize(10);
+            Settings.setFieldSize(10);
             MainFrame.cl.show(MainFrame.navigation, "CREATESCREEN");
         });
 
         hard.addActionListener(e -> {
-            Settings.setBoardSize(15);
+            Settings.setFieldSize(15);
             MainFrame.cl.show(MainFrame.navigation, "CREATESCREEN");
         });
 

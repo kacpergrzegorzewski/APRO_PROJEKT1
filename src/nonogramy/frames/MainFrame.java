@@ -10,8 +10,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-/*
-Klasa odpowiedzialna za wyświetlanie okienka aplikacji. Napisana jest w niej również nawigacja aplikacji.
+/**
+ * Klasa odpowiedzialna za wyswietlanie okienka aplikacji. Napisana jest w niej rowniez nawigacja aplikacji
  */
 
 

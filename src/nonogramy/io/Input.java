@@ -9,17 +9,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-//Klasa wczytująca nonogram
+/**
+ * Klasa wumozliwiajaca odczyt nonogramu z png
+ */
 public class Input {
     private static int width; //Szerokość
     private static int height; //Wysokość
     private Tile[] tiles;
     public static int[] pixels; //Liczba pixeli w pliku png
-
-    //Konstruktor
-    public Input() {
-        //readNonogram(path);
-    }
 
     public static Board readNonogram(String path) throws IOException {
         int mask = 0x00ffffff; //Maska usuwająca kanał alpha
@@ -53,25 +50,7 @@ public class Input {
         board.generateNumbers();
 
         return board;
-
-
     }
-
-    //Wyświetla wczytany nonogram w konsoli
-/*    public void printNonogram() {
-        for (int i = 0; i < pixels.length; i++) {
-            if (i != 0 && i % width == 0)
-                System.out.println();
-
-            if (pixels[i] == 0x000000)
-                System.out.print(" X ");
-            else
-                System.out.print(" . ");
-        }
-    }
-    }
-
- */
 
     public Tile[] getTiles() {
 
