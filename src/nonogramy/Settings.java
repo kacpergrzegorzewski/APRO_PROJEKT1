@@ -2,12 +2,16 @@ package nonogramy;
 
 import nonogramy.entity.Tile;
 
+import java.awt.*;
+
 /**
  * Mam taki plan zeby wszystkie rzeczy ktore wybieramy w aplikacji były przechowywane w tej klasie (np. wybrany rozmiar mapy)
  */
 public class Settings {
     private static int fieldSize=1;
     private static Tile[] tiles=new Tile[0];
+
+    public static Font homeFont = new Font("Arial", Font.PLAIN, 40);
 
     private static int boardSize = 1;
 

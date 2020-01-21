@@ -7,15 +7,15 @@ import nonogramy.panels.play.SelectSizeScreen;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * Klasa odpowiedzialna za wyswietlanie okienka aplikacji. Napisana jest w niej rowniez nawigacja aplikacji
  */
-
-
 public class MainFrame extends JFrame {
+    private final int WIDTH = 100;
+    private final int HEIGHT = WIDTH / 5 * 4;
+    private final int SCALE = 12;
+
 
     public static CardLayout cl = new CardLayout(){
         @Override
@@ -45,8 +45,10 @@ public class MainFrame extends JFrame {
     private JButton homeButton = new JButton("home");
 
     public MainFrame() {
-        //nazwa okienka
-        super("Nonogramy");
+        Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
+
+        //homeButton.
+
         navigation.setLayout(cl);
 
         //tutaj chciałem dodać przycisk dostępny na wszystkich ekranach, który by nas przenosił do ekranu głównego
@@ -58,8 +60,12 @@ public class MainFrame extends JFrame {
         add(home);
         add(navigation);
 
+        setResizable(false); //Brak resizowania
+        setTitle("Nonogramy"); //Tytuł okienka
+        setPreferredSize(size); //Rozmiar
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); //Na środku ekranu
         setVisible(true);
     }
 }
