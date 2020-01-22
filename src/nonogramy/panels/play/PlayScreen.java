@@ -17,14 +17,15 @@ import java.util.ArrayList;
  * Klasa z ekranem gry
  */
 public class PlayScreen extends JPanel {
+    Image bg = new ImageIcon("img/play_background.png").getImage();
 
     public PlayScreen() {
-        int x=100;
-        int y=100;
         Block[][] block = new Block[Settings.getFieldSize()][Settings.getFieldSize()];
+
         Board board = new Board(Settings.getFieldSize());
         board.setTiles(Settings.getTiles());
         board.generateNumbers();
+
         ArrayList<ArrayList<Integer>> columnNumbers = board.getColsNumbers();
         ArrayList<ArrayList<Integer>> rowNumbers = board.getRowNumbers();
 
@@ -42,7 +43,6 @@ public class PlayScreen extends JPanel {
         JPanel fieldContainer = new JPanel();
         JPanel columnNumbersContainer = new JPanel();
         JPanel rowNumbersContainer = new JPanel();
-        Number testNumber = new Number("2");
 
         //Grids
         GridLayout fieldLayout = new GridLayout(Settings.getFieldSize(), Settings.getFieldSize());
@@ -59,29 +59,29 @@ public class PlayScreen extends JPanel {
         homeButton.addActionListener(e -> MainFrame.cl.show(MainFrame.navigation, "HOMESCREEN"));
 
         solve.addActionListener(e -> {
-            board.solve();
-            Tile[] tiles = board.getTiles();
-            int i=0;
-            for(int row=0; row<Settings.getFieldSize(); row++ ) {
+            Tile[] tiles = board.solve();
+            int i = 0;
+
+            for (int row = 0; row < Settings.getFieldSize(); row++) {
                 for (int column = 0; column < Settings.getFieldSize(); column++) {
                     block[row][column].setBlock(tiles[i].isChecked());
                     block[row][column].repaint();
                     i++;
                 }
             }
-
         });
 
         check.addActionListener(e -> {
-            int i=0;
+            int i = 0;
             boolean isCorrect = true;
             boolean correctAnswer;
             boolean currentAnswer;
-            for(int row=0; row<Settings.getFieldSize(); row++ ) {
+
+            for (int row = 0; row < Settings.getFieldSize(); row++) {
                 for (int column = 0; column < Settings.getFieldSize(); column++) {
                     correctAnswer = Settings.getTiles()[i].isChecked();
                     currentAnswer = block[row][column].getBlock();
-                    if(correctAnswer != currentAnswer) {
+                    if (correctAnswer != currentAnswer) {
                         isCorrect = false;
                         break;
                     }
@@ -93,8 +93,7 @@ public class PlayScreen extends JPanel {
             if (isCorrect) {
                 notification.setText("NONOGRAM ROZWIAZANY PRAWIDLOWO. GRATULACJE!");
                 notification.repaint();
-            }
-            else {
+            } else {
                 notification.setText("LOL. ZLE. XDDDDDDDD.");
                 notification.repaint();
             }
@@ -103,8 +102,8 @@ public class PlayScreen extends JPanel {
         /*
           Tworzenie siatki nonogramu
          */
-        for(int row=0; row<Settings.getFieldSize(); row++ ) {
-            for(int column=0; column<Settings.getFieldSize(); column++ ) {
+        for (int row = 0; row < Settings.getFieldSize(); row++) {
+            for (int column = 0; column<Settings.getFieldSize(); column++) {
                 block[row][column] = new Block();
                 int finalRow = row;
                 int finalColumn = column;
@@ -119,21 +118,21 @@ public class PlayScreen extends JPanel {
             }
         }
 
-
         /*
         Tworzenie siatki liczb kolumn i rzędów
          */
         columnNumbersContainer.setLayout(columnNumbersLayout);
-        int columnNumbersGridX=0;
-        int columnNumbersGridY=Settings.getFieldSize();
+        int columnNumbersGridX = 0;
+        int columnNumbersGridY = Settings.getFieldSize();
 
         for (int column = 0; column < Settings.getFieldSize(); column++) {
-            if(columnNumbers.size()!=0 && columnNumbers.get(column).size()==0) {
+            if (columnNumbers.size() != 0 && columnNumbers.get(column).size() == 0) {
                 columnNumbersLayoutSettings.gridx = columnNumbersGridX;
                 columnNumbersLayoutSettings.gridy = columnNumbersGridY;
                 columnNumbersContainer.add(new Number("0"), columnNumbersLayoutSettings);
                 columnNumbersGridX++;
             }
+
             if(columnNumbers.size() > 0) {
                 for (int number = columnNumbers.get(column).size()-1; number >= 0; number--) {
                     columnNumbersLayoutSettings.gridx = columnNumbersGridX;
@@ -147,16 +146,17 @@ public class PlayScreen extends JPanel {
         }
 
         rowNumbersContainer.setLayout(rowNumbersLayout);
-        int rowNumbersGridX=Settings.getFieldSize();
-        int rowNumbersGridY=0;
+        int rowNumbersGridX = Settings.getFieldSize();
+        int rowNumbersGridY = 0;
 
         for (int row = 0; row < Settings.getFieldSize(); row++) {
-            if(rowNumbers.size()!=0 && rowNumbers.get(row).size()==0) {
+            if(rowNumbers.size() != 0 && rowNumbers.get(row).size() == 0) {
                 rowNumbersLayoutSettings.gridx = rowNumbersGridX;
                 rowNumbersLayoutSettings.gridy = rowNumbersGridY;
                 rowNumbersContainer.add(new Number("0"), rowNumbersLayoutSettings);
                 rowNumbersGridX++;
             }
+
             if(rowNumbers.size() > 0) {
                 for (int number = rowNumbers.get(row).size()-1; number >= 0; number--) {
                     rowNumbersLayoutSettings.gridx = rowNumbersGridX;
@@ -169,61 +169,75 @@ public class PlayScreen extends JPanel {
             }
         }
 
-
         /*
           Ustawianie wyglądu wszystkiego
          */
+
         fieldContainer.setLayout(fieldLayout);
         container.setLayout(containerLayout);
 
-        setBackground(Color.WHITE);
-        container.setBackground(Color.WHITE);
-        fieldContainer.setBackground(Color.WHITE);
+        setOpaque(false);
+        container.setOpaque(false);
+        fieldContainer.setOpaque(false);
+        columnNumbersContainer.setOpaque(false);
+        rowNumbersContainer.setOpaque(false);
 
+        setBackground(new Color(0,0,0,0));
+        container.setBackground(new Color(0,0,0,0));
+        fieldContainer.setBackground(new Color(0,0,0,0));
+        columnNumbersContainer.setBackground(new Color(0,0,0,0));
+        rowNumbersContainer.setBackground(new Color(0,0,0,0));
 
-        c.gridx=0;
-        c.gridy=0;
+        c.gridx = 0;
+        c.gridy = 0;
         container.add(homeButton, c);
 
-        c.gridx=1;
-        c.gridy=0;
+        c.gridx = 1;
+        c.gridy = 0;
         container.add(text, c);
 
-        c.gridx=1;
-        c.gridy=1;
+        c.gridx = 1;
+        c.gridy = 1;
         container.add(columnNumbersContainer,c);
 
-        c.gridx=0;
-        c.gridy=2;
+        c.gridx = 0;
+        c.gridy = 2;
         container.add(rowNumbersContainer,c);
 
-        c.gridx=1;
-        c.gridy=2;
-        c.gridwidth=1;
-        c.ipady=20;
+        c.gridx = 1;
+        c.gridy = 2;
+        c.gridwidth = 1;
+        c.ipady = 20;
         container.add(fieldContainer, c);
 
-        c.gridx=0;
-        c.gridy=3;
-        c.gridwidth=1;
-        c.weightx=0.5;
-        c.anchor=GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 1;
+        c.weightx = 0.5;
+        c.anchor = GridBagConstraints.CENTER;
         container.add(solve, c);
 
-        c.gridx=1;
-        c.gridy=3;
-        c.weightx=0.5;
-        c.anchor=GridBagConstraints.CENTER;
+        c.gridx = 1;
+        c.gridy = 3;
+        c.weightx = 0.5;
+        c.anchor = GridBagConstraints.CENTER;
         container.add(check, c);
 
-        c.gridx=0;
-        c.gridy=4;
-        c.gridwidth=3;
-        c.weightx=2;
-        c.anchor=GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 4;
+        c.gridwidth = 3;
+        c.weightx = 2;
+        c.anchor = GridBagConstraints.CENTER;
         container.add(notification, c);
 
-        add(container);
 
+
+        add(container);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
     }
 }

@@ -10,15 +10,11 @@ import static java.util.stream.Collectors.toList;
  * Klasa umozliwiajaca rozwiazanie nonogramu przez algorytm
  */
 public class Solver {
-    //private String[] p; //Tablica ciągu liter dawana do algorytmu
 
     /**
      * Konstruktor
      */
-    public Solver() {
-        //p = prepareArray(board.getRowNumbers(), board.getColsNumbers()); //Przypisuje tablicy liter litery wcześniej zamienione przez funkcję prepareArray
-        //newPuzzle(p, board); //Rysuje rozwiązanie
-    }
+    public Solver() {}
 
     /**
      * Rozwiazuje i wyswietla plansze
@@ -52,11 +48,8 @@ public class Solver {
             for (int i = 0; i < rows.size(); i++) {
                 solvedTiles[c] = new Tile(i, c/Settings.getBoardSize(), row.get(0).get(i));
                 c++;
-                System.out.print(row.get(0).get(i) ? "# " : ". ");
             }
-            System.out.println();
         }
-        System.out.println();
 
         return solvedTiles;
     }

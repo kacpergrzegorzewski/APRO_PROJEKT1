@@ -4,32 +4,57 @@ import nonogramy.panels.HomeScreen;
 import nonogramy.panels.create.CreateScreen;
 import nonogramy.panels.play.PlayScreen;
 import nonogramy.panels.play.SelectSizeScreen;
+import nonogramy.panels.CreditsScreen;
+
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 /**
  * Klasa odpowiedzialna za wyswietlanie okienka aplikacji. Napisana jest w niej rowniez nawigacja aplikacji
  */
-
-
 public class MainFrame extends JFrame {
+    private final int WIDTH = 100;
+    private final int HEIGHT = WIDTH / 5 * 4;
+    private final int SCALE = 12;
+
 
     public static CardLayout cl = new CardLayout(){
         @Override
         public void show(java.awt.Container parent, String name) {
             navigation.removeAll();
 
-            JPanel homeScreen = new HomeScreen();
-            JPanel selectSizeScreen_play = new SelectSizeScreen();
+            JPanel homeScreen = null;
+            try {
+                homeScreen = new HomeScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            JPanel creditsScreen = null;
+            try {
+                creditsScreen = new CreditsScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            JPanel selectSizeScreen_play = null;
+            try {
+                selectSizeScreen_play = new SelectSizeScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             JPanel playScreen = new PlayScreen();
-            JPanel selectSizeScreen_create = new nonogramy.panels.create.SelectSizeScreen();
+            JPanel selectSizeScreen_create = null;
+            try {
+                selectSizeScreen_create = new nonogramy.panels.create.SelectSizeScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             JPanel create = new CreateScreen();
 
             // schemat dodawania kolejnych ekranów - navigation.add([JPanel klasy ekranu utworzony jak wyżej] , [nazwa jakiej chcemy używać przy definiowaniu przycisku odpowiedzialnego za przechodzenie do danego ekranu]
             navigation.add(homeScreen, "HOMESCREEN");
+            navigation.add(creditsScreen, "CREDITSSCREEN");
             navigation.add(selectSizeScreen_play, "SELECTSIZESCREEN_play");
             navigation.add(playScreen, "PLAYSCREEN");
             navigation.add(selectSizeScreen_create, "SELECTSIZESCREEN_create");
@@ -45,8 +70,10 @@ public class MainFrame extends JFrame {
     private JButton homeButton = new JButton("home");
 
     public MainFrame() {
-        //nazwa okienka
-        super("Nonogramy");
+        Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
+
+        //homeButton.
+
         navigation.setLayout(cl);
 
         //tutaj chciałem dodać przycisk dostępny na wszystkich ekranach, który by nas przenosił do ekranu głównego
@@ -58,8 +85,12 @@ public class MainFrame extends JFrame {
         add(home);
         add(navigation);
 
+        setResizable(false); //Brak resizowania
+        setTitle("Nonogramy"); //Tytuł okienka
+        setPreferredSize(size); //Rozmiar
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); //Na środku ekranu
         setVisible(true);
     }
 }

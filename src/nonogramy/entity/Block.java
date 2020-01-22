@@ -14,6 +14,7 @@ public class Block extends JPanel  {
     private int height = 30;  //wysokość obramowania
     private int width = 30;  //szerokość obramowania
 
+
     /**
      * Konstruktor
      */
@@ -27,7 +28,7 @@ public class Block extends JPanel  {
      * Setter
      * @param isEnabled wartosc zaznaczenia
      */
-    public void setBlock(boolean isEnabled) { this.isEnabled=isEnabled; }
+    public void setBlock(boolean isEnabled) { this.isEnabled = isEnabled; }
 
     /**
      * Getter
@@ -53,15 +54,16 @@ public class Block extends JPanel  {
 
     @Override
     protected void paintComponent(Graphics g) {
+        setOpaque(false);
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setBackground(Color.WHITE);
+        g2.setBackground(new Color(0,0,0,0));
         g2.drawRect(0, 0, width, height);
 
-        Font font = new Font("Arial", Font.PLAIN, 24);
+        Font font = new Font("Calibri", Font.PLAIN, 32);
         g2.setFont(font);
 
         if(isEnabled) g2.fillRect(3,3, width -5, height -5); //-5 aby wypełnić tylko część wnętrza, a współrzędne ustawiają po środku
-        if(isCrossed) g2.drawString("X", 8, 24);  //Rysowanie znaku "X" we wnętrzu
+        if(isCrossed) g2.drawString("X", 7, 25);  //Rysowanie znaku "X" we wnętrzu
     }
 }
