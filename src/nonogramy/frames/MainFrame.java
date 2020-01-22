@@ -7,6 +7,7 @@ import nonogramy.panels.play.SelectSizeScreen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Klasa odpowiedzialna za wyswietlanie okienka aplikacji. Napisana jest w niej rowniez nawigacja aplikacji
@@ -22,7 +23,12 @@ public class MainFrame extends JFrame {
         public void show(java.awt.Container parent, String name) {
             navigation.removeAll();
 
-            JPanel homeScreen = new HomeScreen();
+            JPanel homeScreen = null;
+            try {
+                homeScreen = new HomeScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             JPanel selectSizeScreen_play = new SelectSizeScreen();
             JPanel playScreen = new PlayScreen();
             JPanel selectSizeScreen_create = new nonogramy.panels.create.SelectSizeScreen();
