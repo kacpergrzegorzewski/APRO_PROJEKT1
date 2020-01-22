@@ -27,6 +27,8 @@ public class Board {
      */
     public ArrayList<ArrayList<Integer>> getColsNumbers() { return columnNumbers; }
 
+    //Konstruktor
+
     public Board(int size) {
         Settings.setBoardSize(size);
         tiles = new Tile[size * size];
@@ -52,7 +54,7 @@ public class Board {
         }
     }
 
-    //Zwraca tablicę wartości zaznaczeń kolejnych tiles'ów
+    //Zwraca tablicę wartości zaznaczeń kolejnych tilesów
     public boolean[] getBoard() {
         boolean[] value = new boolean[tiles.length];
         for (int i = 0; i < tiles.length; i++) {
