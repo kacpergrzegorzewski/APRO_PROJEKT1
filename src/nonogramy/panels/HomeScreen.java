@@ -16,7 +16,7 @@ import java.io.IOException;
  * Pierwszy ekran, wyswietlany po właczeniu aplikacji
  */
 public class HomeScreen extends JPanel {
-    Image bg = new ImageIcon("img/background.png").getImage();
+    Image bg = new ImageIcon("img/home_background.png").getImage();
 
     public HomeScreen() throws IOException {
         setLayout(null);

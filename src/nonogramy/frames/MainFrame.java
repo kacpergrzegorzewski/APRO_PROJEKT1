@@ -29,9 +29,19 @@ public class MainFrame extends JFrame {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            JPanel selectSizeScreen_play = new SelectSizeScreen();
+            JPanel selectSizeScreen_play = null;
+            try {
+                selectSizeScreen_play = new SelectSizeScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             JPanel playScreen = new PlayScreen();
-            JPanel selectSizeScreen_create = new nonogramy.panels.create.SelectSizeScreen();
+            JPanel selectSizeScreen_create = null;
+            try {
+                selectSizeScreen_create = new nonogramy.panels.create.SelectSizeScreen();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             JPanel create = new CreateScreen();
 
             // schemat dodawania kolejnych ekranów - navigation.add([JPanel klasy ekranu utworzony jak wyżej] , [nazwa jakiej chcemy używać przy definiowaniu przycisku odpowiedzialnego za przechodzenie do danego ekranu]
