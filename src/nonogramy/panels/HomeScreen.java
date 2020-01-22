@@ -24,19 +24,9 @@ public class HomeScreen extends JPanel {
         JButton createButton = new JButton("Stwórz nonogram");
 
         //tak mniej więcej wygląda implementacja zachowania buttona po wciśnięciu.
-        playButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainFrame.cl.show(MainFrame.navigation, "SELECTSIZESCREEN_play");
-            }
-        });
+        playButton.addActionListener(e -> MainFrame.cl.show(MainFrame.navigation, "SELECTSIZESCREEN_play"));
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainFrame.cl.show(MainFrame.navigation, "SELECTSIZESCREEN_create");
-            }
-        });
+        createButton.addActionListener(e -> MainFrame.cl.show(MainFrame.navigation, "SELECTSIZESCREEN_create"));
 
 
         add(playButton);
