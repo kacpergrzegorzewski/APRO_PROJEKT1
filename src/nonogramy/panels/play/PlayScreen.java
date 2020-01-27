@@ -92,11 +92,10 @@ public class PlayScreen extends JPanel {
 
             if (isCorrect) {
                 notification.setText("NONOGRAM ROZWIAZANY PRAWIDLOWO. GRATULACJE!");
-                notification.repaint();
             } else {
                 notification.setText("LOL. ZLE. XDDDDDDDD.");
-                notification.repaint();
             }
+            notification.repaint();
         });
 
         /*

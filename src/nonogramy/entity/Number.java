@@ -10,13 +10,10 @@ import java.awt.*;
 public class Number extends JPanel  {
     private String text="";
 
-
-
     public Number(String text) {
         setPreferredSize(new Dimension(34, 34));
         this.text = text;
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -24,11 +21,11 @@ public class Number extends JPanel  {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setBackground(new Color(0,0,0,0));
-        int height = 20;
-        int width = 20;
+        int height = 26;
+        int width = 26;
         g2.drawRect(5, 5, width, height);
 
-        Font font = new Font("Calibri", Font.PLAIN, 24);
+        Font font = new Font("Calibri", Font.PLAIN, 22);
         g2.setFont(font);
 
         g2.drawString(text, 8, 24);

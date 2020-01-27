@@ -11,7 +11,8 @@ public class Settings {
     private static int fieldSize=1;
     private static Tile[] tiles=new Tile[0];
 
-    public static Font homeFont = new Font("Papyrus", Font.PLAIN, 40);
+    public static Font boldFont = new Font("Papyrus", Font.BOLD, 68);
+    public static Font normalFont = new Font("Papyrus", Font.PLAIN, 48);
 
     private static int boardSize = 1;
 
