@@ -60,10 +60,10 @@ public class Block extends JPanel  {
         g2.setBackground(new Color(0,0,0,0));
         g2.drawRect(0, 0, width, height);
 
-        Font font = new Font("Calibri", Font.PLAIN, 32);
+        Font font = new Font("Papyrus", Font.PLAIN, 24);
         g2.setFont(font);
 
         if(isEnabled) g2.fillRect(3,3, width -5, height -5); //-5 aby wypełnić tylko część wnętrza, a współrzędne ustawiają po środku
-        if(isCrossed) g2.drawString("X", 7, 25);  //Rysowanie znaku "X" we wnętrzu
+        if(isCrossed) g2.drawString("X", 6, 23);  //Rysowanie znaku "X" we wnętrzu
     }
 }

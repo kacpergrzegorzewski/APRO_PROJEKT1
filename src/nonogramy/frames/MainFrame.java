@@ -86,7 +86,7 @@ public class MainFrame extends JFrame {
         add(navigation);
 
         setResizable(false); //Brak resizowania
-        setTitle("Nonogramy"); //Tytuł okienka
+        setTitle("Nonograms"); //Tytuł okienka
         setPreferredSize(size); //Rozmiar
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
