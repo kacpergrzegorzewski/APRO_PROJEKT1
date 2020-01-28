@@ -29,11 +29,11 @@ public class Solver {
 
         List<List<BitSet>> cols, rows; //Tworzy dwie listy listy bitów
 
-        rows = getCandidates(rowData, colData.length); //Przypisuje możliwe indeksy istnienia jedynke w wierszu
-        cols = getCandidates(colData, rowData.length); //Przypisuje możliwe indeksy istnienia jedynke w kolumnie
+        rows = getCandidates(rowData, colData.length); //Przypisuje możliwe indeksy istnienia jedynki w wierszu
+        cols = getCandidates(colData, rowData.length); //Przypisuje możliwe indeksy istnienia jedynki w kolumnie
 
         int numChanged;
-        //Robi cały czas usówanie niepasujących bloków, do momentu, ąż rozwiązania będą się pokrywać i nie będzie innych możliwych
+        //Robi cały czas usuwanie niepasujących bloków, do momentu, aż rozwiązania będą się pokrywać i nie będzie innych możliwych
         do {
             numChanged = reduceMutual(cols, rows);
             if (numChanged == -1) {
@@ -43,7 +43,7 @@ public class Solver {
         } while (numChanged > 0);
 
         int c = 0;
-        //Rysuje planszę, w zależności od istnienia 1, albo 0 na danym indeksie
+
         for (List<BitSet> row : rows) {
             for (int i = 0; i < rows.size(); i++) {
                 solvedTiles[c] = new Tile(i, c/Settings.getBoardSize(), row.get(0).get(i));
@@ -69,7 +69,7 @@ public class Solver {
 
             int sumChars = s.chars().map(c -> c - 'A' + 1).sum(); //Zamienia literki na cyfry i sumuje je
 
-            //Dla każdego elementu w ciągu znaków zamienia je odpowiednio na konkretnee liczby
+            //Dla każdego elementu w ciągu znaków zamienia je odpowiednio na konkretne liczby
             List<String> prep = stream(s.split("")).map(x -> repeat(x.charAt(0) - 'A' + 1, "1")).collect(toList());
 
             //Dla każdego możliwego rozwiązania
@@ -103,7 +103,7 @@ public class Solver {
         //Dla wszystkich zer znajdujących się w wierszy/kolumnie...
         for (int x = 1; x < numZeros - ones.size() + 2; x++) {
             List<String> skipOne = ones.stream().skip(1).collect(toList()); //Oddziela bloki zamalowane od siebie
-            //Odejmuje x od ilości zer i jescze raz wywołuje funkcję
+            //Odejmuje x od ilości zer i jeszcze raz wywołuje funkcję
             for (String tail : genSequence(skipOne, numZeros - x))
                 result.add(repeat(x, "0") + ones.get(0) + tail);
         }
@@ -123,9 +123,9 @@ public class Solver {
         return sb.toString();
     }
 
-    /*Jeżeli wszyskie możliwe indesky jedynek w rozwiązaniach są takie same dla każdego
+    /*Jeżeli wszystkie możliwe indesky jedynek w rozwiązaniach są takie same dla każdego
     pola, wtedy to pole jest zaznaczane, tak samo w wierszach jak i w kolumnach
-    Sprawdza do dla każdego wiersza i kolumny, wtedy kiedy nie będzie już możliwości odrzycenia rozwiązania
+    Sprawdza do dla każdego wiersza i kolumny, wtedy kiedy nie będzie już możliwości odrzucenia rozwiązania
     lub lista będzie pusta. Następnie zwraca liczbę odrzuconych pol które nie nalezały do rozwiązania */
 
     /**

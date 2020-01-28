@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Klasa wumozliwiajaca odczyt nonogramu z png
+ * Klasa wumozliwiajaca odczyt nonogramu z gotowych nonogramow png
  */
 public class Input {
     private static int width; //Szerokość

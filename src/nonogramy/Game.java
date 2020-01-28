@@ -15,5 +15,9 @@ public class Game {
         Board board;
         board = Input.readNonogram(RandomGenerator.randomNonogramPath(5));
         board.solve();
+        board.printBoard();
+        System.out.println();
+        System.out.println(board.getColsNumbers());
+        System.out.println(board.getRowNumbers());
     }
 }

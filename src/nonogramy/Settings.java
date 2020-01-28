@@ -13,6 +13,7 @@ public class Settings {
 
     public static Font boldFont = new Font("Papyrus", Font.BOLD, 68);
     public static Font normalFont = new Font("Papyrus", Font.PLAIN, 48);
+    public static Font newFont = new Font("Papyrus", Font.PLAIN, 32);
 
     private static int boardSize = 1;
 

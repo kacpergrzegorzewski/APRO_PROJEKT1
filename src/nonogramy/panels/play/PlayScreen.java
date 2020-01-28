@@ -30,13 +30,15 @@ public class PlayScreen extends JPanel {
         ArrayList<ArrayList<Integer>> rowNumbers = board.getRowNumbers();
 
         //Labels
-        JLabel text = new JLabel("poziom trudności: " + Settings.getFieldSize());
+        JLabel text = new JLabel("Difficulty: " + Settings.getFieldSize());
         JLabel notification = new JLabel("");
+        text.setFont(Settings.newFont);
+        notification.setFont(Settings.newFont);
 
         //Buttons
-        JButton homeButton = new JButton("Powrót");
-        JButton solve = new JButton("Rozwiąż nonogram");
-        JButton check = new JButton("Sprawdź");
+        JButton homeButton = new JButton("Return");
+        JButton solve = new JButton("Solve nonogram");
+        JButton check = new JButton("Check");
 
         //JPanels
         JPanel container = new JPanel();
@@ -91,9 +93,9 @@ public class PlayScreen extends JPanel {
             }
 
             if (isCorrect) {
-                notification.setText("NONOGRAM ROZWIAZANY PRAWIDLOWO. GRATULACJE!");
+                notification.setText("Correct! Congratulations");
             } else {
-                notification.setText("LOL. ZLE. XDDDDDDDD.");
+                notification.setText("Wrong. Try again.");
             }
             notification.repaint();
         });

@@ -19,16 +19,19 @@ import java.io.IOException;
  */
 
 public class CreateScreen extends JPanel {
+    Image bg = new ImageIcon("img/play_background.png").getImage();
+
     public CreateScreen() {
         Block[][] block = new Block[Settings.getBoardSize()][Settings.getBoardSize()];
 
         //Labels
-        JLabel text = new JLabel("poziom trudności: " + Settings.getBoardSize());
+        JLabel text = new JLabel("Difficulty: " + Settings.getBoardSize());
+        text.setFont(Settings.newFont);
 
         //Buttons
-        JButton homeButton = new JButton("Powrót");
-        JButton randomButton = new JButton("Losuj nonogram");
-        JButton saveButton = new JButton("Zapisz");
+        JButton homeButton = new JButton("Return");
+        JButton randomButton = new JButton("Generate random nonogram");
+        JButton saveButton = new JButton("Save");
 
         //JPanels
         JPanel container = new JPanel();
@@ -115,9 +118,15 @@ public class CreateScreen extends JPanel {
         fieldContainer.setLayout(fieldLayout);
         container.setLayout(containerLayout);
 
-        setBackground(Color.WHITE);
-        container.setBackground(Color.WHITE);
-        fieldContainer.setBackground(Color.WHITE);
+        setOpaque(false);
+        container.setOpaque(false);
+        fieldContainer.setOpaque(false);
+
+
+        setBackground(new Color(0,0,0,0));
+        container.setBackground(new Color(0,0,0,0));
+        fieldContainer.setBackground(new Color(0,0,0,0));
+
 
         c.gridx = 0;
         c.gridy = 0;
@@ -147,6 +156,12 @@ public class CreateScreen extends JPanel {
         container.add(saveButton, c);
 
         add(container);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
     }
 }
 
