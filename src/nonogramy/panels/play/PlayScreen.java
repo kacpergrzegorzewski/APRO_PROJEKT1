@@ -231,8 +231,6 @@ public class PlayScreen extends JPanel {
         c.anchor = GridBagConstraints.CENTER;
         container.add(notification, c);
 
-
-
         add(container);
     }
 

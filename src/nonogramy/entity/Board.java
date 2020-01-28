@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * Klasa tworzaca instancje planszy
  */
 public class Board {
-    //public int size; //Rozmiar planszy
     public Tile[] tiles; //Tablica wszystkich pól na planszy
 
     private ArrayList<ArrayList<Integer>> rowNumbers = new ArrayList<>();

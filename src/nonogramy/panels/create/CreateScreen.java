@@ -74,7 +74,7 @@ public class CreateScreen extends JPanel {
             board.setTiles(tiles);
 
             try {
-                //Wzależności od rozmiaru planszy dopasowuje skalę zapisu
+                //W zależności od rozmiaru planszy dopasowuje skalę zapisu
                 switch (Settings.getBoardSize()) {
                     case 5:
                         Output.writeNonogram(board, 50,  "user_saved_nonograms/5x5/nonogram5x5.png");

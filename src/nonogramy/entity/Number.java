@@ -30,7 +30,4 @@ public class Number extends JPanel  {
 
         g2.drawString(text, 8, 24);
     }
-
-
-
 }

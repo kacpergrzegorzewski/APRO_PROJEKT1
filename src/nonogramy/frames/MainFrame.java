@@ -72,8 +72,6 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
 
-        //homeButton.
-
         navigation.setLayout(cl);
 
         //tutaj chciałem dodać przycisk dostępny na wszystkich ekranach, który by nas przenosił do ekranu głównego
