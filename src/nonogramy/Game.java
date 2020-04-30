@@ -11,6 +11,7 @@ import java.io.IOException;
  * Klasa do testowania w okienku konsoli
  */
 public class Game {
+    // metoda main
     public static void main(String[] args) throws IOException {
         Board board;
         board = Input.readNonogram(RandomGenerator.randomNonogramPath(5));
